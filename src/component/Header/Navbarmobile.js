@@ -27,7 +27,10 @@ function Navbarmobile({ functionSetToggle, functionSetActive }) {
             {" "}
             <i class="fa-brands fa-square-facebook"></i>
           </a>
-          <a>
+          <a
+            href="https://www.linkedin.com/in/nguyen-le-thien-duc-30aa03251/"
+            target="blank"
+          >
             {" "}
             <i class="fa-brands fa-linkedin"></i>
           </a>
