@@ -1,0 +1,113 @@
+.banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+  border-bottom: 1px solid #cccc;
+  .banner__container {
+    max-width: 1024px;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: url("https://res.cloudinary.com/de41uvd76/image/upload/v1676563539/q9nz0az2yfwbfg1epr8s.png")
+      top center / cover no-repeat;
+    .banner__container-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .static-text {
+        padding: 20px 0;
+        font-size: 60px;
+        color: #082032;
+        font-weight: 700;
+        span {
+          color: #984447;
+          font-weight: 800;
+        }
+      }
+      .banner__container-live-text {
+        display: flex;
+        align-items: center;
+        .dynamic-texts {
+          margin-left: 16px;
+          line-height: 80px;
+          height: 80px;
+          overflow: hidden;
+          li {
+            position: relative;
+            top: 0;
+            list-style: none;
+            font-size: 60px;
+            color: #984447;
+            font-weight: 800;
+            animation: slide 9s steps(3) infinite;
+            &::after {
+              content: "";
+              position: absolute;
+              left: 0;
+              background-color: white;
+              height: 100%;
+              width: 100%;
+              border-left: 2px solid #984447;
+              animation: typing 3s steps(10) infinite;
+            }
+          }
+        }
+      }
+    }
+    .banner__container-img img {
+      width: 100%;
+    }
+  }
+}
+
+@keyframes typing {
+  40%,
+  60% {
+    left: calc(100% + 30px);
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes slide {
+  100% {
+    top: -240px;
+  }
+}
+@media (max-width: 1024px) {
+  .banner {
+    .banner__container {
+      .banner__container-content {
+        .static-text {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .banner {
+    margin-top: 76px;
+    .banner__container {
+      flex-direction: column-reverse;
+      padding: 0 8px;
+      .banner__container-content {
+        align-items: center;
+        .banner__container-intro {
+          display: none;
+        }
+        .banner__container-live-text {
+          .static-text {
+            font-size: 36px;
+          }
+          .dynamic-texts li {
+            font-size: 36px;
+          }
+        }
+      }
+    }
+  }
+}

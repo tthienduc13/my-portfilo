@@ -1,0 +1,14 @@
+.App {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-padding: 80px;
+}
