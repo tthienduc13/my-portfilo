@@ -141,3 +141,37 @@ $tablet-width: 1024px;
     top: -240px;
   }
 }
+@media (max-width: 1024px) {
+  .banner {
+    .banner__container {
+      .banner__container-content {
+        .static-text {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .banner {
+    margin-top: 76px;
+    .banner__container {
+      flex-direction: column-reverse;
+      padding: 0 8px;
+      .banner__container-content {
+        align-items: center;
+        .banner__container-intro {
+          display: none;
+        }
+        .banner__container-live-text {
+          .static-text {
+            font-size: 36px;
+          }
+          .dynamic-texts li {
+            font-size: 36px;
+          }
+        }
+      }
+    }
+  }
+}
