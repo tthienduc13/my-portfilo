@@ -6,7 +6,7 @@ function About() {
       <div className="about" id="about">
         <div className="about__container">
           <div className="about__container-img">
-            <img src="https://res.cloudinary.com/de41uvd76/image/upload/v1676038895/pt09zjulhkxxugmgom1f.jpg"></img>
+            <img src={require("../../assets/aboutImg.jpg")}></img>
           </div>
           <div className="about__container-content">
             <div className="about__container-content-header">

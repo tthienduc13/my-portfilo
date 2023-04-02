@@ -1,17 +1,36 @@
 import React from "react";
 import "../Header/Header.scss";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbarmobile from "./Navbarmobile";
 function Header() {
+  const ref = useRef();
   const [toggle, setToggle] = useState(false);
   const showMenu = () => {
     setToggle(!toggle);
     setActive(!acitve);
   };
   const [acitve, setActive] = useState(false);
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (toggle && ref.current && !ref.current.contains(e.target)) {
+        setToggle(!toggle);
+        setActive(!acitve);
+      }
+    };
+
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [toggle]);
+
   return (
     <>
-      <div className="header">
+      <div className="header" ref={ref}>
         <div className="header__container">
           {/* Navbar */}
           <ul className="header__container-navbar">

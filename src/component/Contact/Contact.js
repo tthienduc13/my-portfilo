@@ -32,7 +32,7 @@ function Contact() {
                 </form>
               </div>
               <div className="first-row-img">
-                <img src="https://res.cloudinary.com/de41uvd76/image/upload/v1676569620/k42jnl7fxdart5ojdisa.jpg"></img>
+                <img src={require("../../assets/contactProfile.jpg")}></img>
               </div>
             </div>
             <div className="second-row">

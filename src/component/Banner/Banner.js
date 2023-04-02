@@ -1,5 +1,6 @@
 import React from "react";
 import "../Banner/Banner.scss";
+import BlueBg from "../../assets/BlueBg.svg";
 function Banner() {
   return (
     <>
@@ -28,6 +29,7 @@ function Banner() {
             </div>
           </div>
           <div className="banner__container-img">
+            <img className="blue-bg" src={BlueBg}></img>
             <img src="https://res.cloudinary.com/de41uvd76/image/upload/v1676564043/qdyar1ai2l1afdpabfmy.png"></img>
           </div>
         </div>

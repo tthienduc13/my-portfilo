@@ -1,26 +1,73 @@
+$mobile-width: 768px;
+$small-tablet-width: 960px;
+$tablet-width: 1024px;
+
+@mixin tablet {
+  @media (min-width: #{$small-tablet-width}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin small-tablet {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$small-tablet-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
 .banner {
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 56px;
   border-bottom: 1px solid #cccc;
-  .banner__container {
+  @include mobile() {
+    margin-top: 76px;
+  }
+  &__container {
     max-width: 1024px;
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
     padding: 0 20px;
-    background: url("https://res.cloudinary.com/de41uvd76/image/upload/v1676563539/q9nz0az2yfwbfg1epr8s.png")
-      top center / cover no-repeat;
-    .banner__container-content {
+    @include small-tablet() {
+      padding: 0 8px;
+    }
+    @include mobile() {
+      flex-direction: column-reverse;
+      padding: 0 8px;
+    }
+    &-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      @include mobile() {
+        align-items: center;
+      }
+      .banner__container-intro {
+        @include mobile() {
+          display: none;
+        }
+      }
       .static-text {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         padding: 20px 0;
-        font-size: 60px;
+        font-size: 50px;
         color: #082032;
         font-weight: 700;
+        @include small-tablet() {
+          font-size: 36px;
+        }
+        @include mobile() {
+          font-size: 36px;
+        }
         span {
           color: #984447;
           font-weight: 800;
@@ -34,11 +81,17 @@
           line-height: 80px;
           height: 80px;
           overflow: hidden;
+          font-size: 60px;
+          @include small-tablet() {
+            font-size: 40px;
+          }
+          @include mobile() {
+            font-size: 36px;
+          }
           li {
             position: relative;
             top: 0;
             list-style: none;
-            font-size: 60px;
             color: #984447;
             font-weight: 800;
             animation: slide 9s steps(3) infinite;
@@ -56,8 +109,19 @@
         }
       }
     }
-    .banner__container-img img {
-      width: 100%;
+    &-img {
+      position: relative;
+      img {
+        width: 100%;
+      }
+      .blue-bg {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        transform: rotate(90deg);
+        width: 100%;
+        z-index: -1;
+      }
     }
   }
 }
@@ -75,39 +139,5 @@
 @keyframes slide {
   100% {
     top: -240px;
-  }
-}
-@media (max-width: 1024px) {
-  .banner {
-    .banner__container {
-      .banner__container-content {
-        .static-text {
-          font-size: 40px;
-        }
-      }
-    }
-  }
-}
-@media (max-width: 768px) {
-  .banner {
-    margin-top: 76px;
-    .banner__container {
-      flex-direction: column-reverse;
-      padding: 0 8px;
-      .banner__container-content {
-        align-items: center;
-        .banner__container-intro {
-          display: none;
-        }
-        .banner__container-live-text {
-          .static-text {
-            font-size: 36px;
-          }
-          .dynamic-texts li {
-            font-size: 36px;
-          }
-        }
-      }
-    }
   }
 }
