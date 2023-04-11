@@ -1,10 +1,28 @@
 import React from "react";
+import { useState } from "react";
 import "../Contact/Contact.scss";
+import "@style/_global.scss";
+import axios from "axios";
+import { contactRequest, uploadData } from "../../apis";
 function Contact() {
+  const $form = document.querySelector("form");
+  const [info, setInfo] = useState({ email: "", name: "", message: "" });
+  const [value, set] = useState("");
+  console.log(info);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await uploadData(info);
+      $form.reset();
+      alert("success");
+    } catch (err) {
+      alert("please try again");
+    }
+  };
   return (
     <>
       <div className="contact" id="contact">
-        <div className="contact__container">
+        <div className="contact__container container">
           <div className="contact__container-header">
             <p>Contact</p>
           </div>
@@ -12,27 +30,47 @@ function Contact() {
             <div className="first-row">
               <div class="box">
                 <p className="box-header">Get In Touch</p>
-                <form>
+                <form className="form">
                   <div class="user-box">
-                    <input required name="" type="text"></input>
+                    <input
+                      required
+                      name=""
+                      type="text"
+                      onChange={(e) =>
+                        setInfo({ ...info, email: e.target.value })
+                      }
+                    ></input>
                     <label>Email</label>
                   </div>
                   <div class="user-box">
-                    <input required name="" type="text"></input>
+                    <input
+                      required
+                      name=""
+                      type="text"
+                      onChange={(e) =>
+                        setInfo({ ...info, name: e.target.value })
+                      }
+                    ></input>
                     <label>Name</label>
                   </div>
-                  <textarea rows="8" placeholder="Enter message..."></textarea>
+                  <textarea
+                    rows="8"
+                    placeholder="Enter message..."
+                    onChange={(e) =>
+                      setInfo({ ...info, message: e.target.value })
+                    }
+                  ></textarea>
                   <a href="#">
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-                    <input type="submit" value="Send"></input>
+                    <button onClick={handleSubmit}> Send </button>
                   </a>
                 </form>
               </div>
               <div className="first-row-img">
-                <img src={require("../../assets/contactProfile.jpg")}></img>
+                <img src={require("@img/contactProfile.jpg")}></img>
               </div>
             </div>
             <div className="second-row">
@@ -51,7 +89,7 @@ function Contact() {
                   <p>Phone Number</p>
                 </div>
                 <div className="contact-method-detail">
-                  <a href="tel: +8442864880"> (+84) 42 864 880</a>
+                  <a href="tel: +8442864880"> (+84) 942 864 880</a>
                 </div>
               </div>
               <div className="contact-method">

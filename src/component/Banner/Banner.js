@@ -1,11 +1,12 @@
 import React from "react";
 import "../Banner/Banner.scss";
-import BlueBg from "../../assets/BlueBg.svg";
+import BlueBg from "@icons/BlueBg.svg";
+import "@style/_global.scss";
 function Banner() {
   return (
     <>
       <div className="banner" id="home">
-        <div className="banner__container">
+        <div className="banner__container container">
           <div className="banner__container-content">
             <div className="banner__container-intro">
               <div className="static-text">Hy!</div>
@@ -30,7 +31,7 @@ function Banner() {
           </div>
           <div className="banner__container-img">
             <img className="blue-bg" src={BlueBg}></img>
-            <img src="https://res.cloudinary.com/de41uvd76/image/upload/v1676564043/qdyar1ai2l1afdpabfmy.png"></img>
+            <img src={require("@img/profileImg.png")}></img>
           </div>
         </div>
       </div>

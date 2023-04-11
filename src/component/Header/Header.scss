@@ -1,26 +1,22 @@
-$mobile-width: 768px;
-@mixin mobile {
-  @media (max-width: #{$mobile-width}) {
-    @content;
-  }
-}
+@import "@style/global";
 .header {
   position: fixed;
+  display: flex;
+  justify-content: center;
   top: 0;
   height: 56px;
   width: 100%;
-  background-color: #082032;
-  display: flex;
+  background-color: $base-color;
+  @include mobile {
+    height: 76px;
+  }
   z-index: 10;
-  justify-content: center;
   &__container {
-    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
     position: relative;
     color: white;
-    display: flex;
     line-height: 56px;
-    flex-grow: 1;
-    justify-content: space-between;
     align-items: center;
     &-name {
       width: 220px;
@@ -28,16 +24,20 @@ $mobile-width: 768px;
       line-height: 56px;
       font-size: 30px;
       font-weight: 800;
-      color: #cc5a71;
+      color: $spot-color;
       margin-left: 20px;
       &::after {
         content: "";
         position: absolute;
         left: 20px;
-        background-color: #082032;
+        background-color: $base-color;
         height: 80%;
         width: 100%;
         animation: typingNameHeader 3s steps(12) 1 normal both;
+      }
+      @include mobile {
+        font-size: 30px;
+        display: block;
       }
     }
     &-navbar {
@@ -54,8 +54,11 @@ $mobile-width: 768px;
           font-weight: 500;
           cursor: pointer;
           &:hover {
-            color: #cc5a71;
+            color: $spot-color;
             transition: 0.5s;
+          }
+          @include mobile {
+            display: none;
           }
         }
       }
@@ -73,10 +76,13 @@ $mobile-width: 768px;
         font-size: 24px;
         padding: 0 8px;
         &:hover {
-          color: #cc5a71;
+          color: $spot-color;
           transform: scale(1.5);
           transition: 0.5s;
         }
+      }
+      @include mobile {
+        display: none;
       }
     }
   }
@@ -89,6 +95,9 @@ $mobile-width: 768px;
   height: 30px;
   background: transparent;
   cursor: pointer;
+  @include mobile {
+    display: block;
+  }
   input {
     display: none;
   }
@@ -124,11 +133,15 @@ $mobile-width: 768px;
   width: 100%;
   display: none;
   position: absolute;
-  padding: 8px 16px;
+  padding: 8px 0;
   top: 76px;
   background-color: #101419;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
+  transition: 0.35s;
+  @include mobile {
+    display: block;
+  }
   ul {
     list-style: none;
     a {
@@ -137,7 +150,13 @@ $mobile-width: 768px;
         color: white;
         font-weight: 500;
         text-align: center;
-        font-size: 18px;
+        font-size: 20px;
+        @include mobile {
+          &:hover {
+            display: block;
+            transform: scaleX(110px);
+          }
+        }
       }
     }
   }
@@ -146,7 +165,7 @@ $mobile-width: 768px;
     justify-content: center;
     a {
       color: white;
-      font-size: 24px;
+      font-size: 30px;
       padding: 4px 8px;
     }
   }
@@ -175,39 +194,5 @@ $mobile-width: 768px;
   }
   100% {
     left: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .header {
-    height: 76px;
-    .header__container {
-      .header__container-navbar li {
-        display: none;
-      }
-      .header__container-name {
-        font-size: 30px;
-        display: block;
-      }
-      .burger {
-        display: block;
-      }
-      .icon a {
-        display: none;
-      }
-
-      .navbar-mobile {
-        display: block;
-        ul {
-          li {
-            &:hover {
-              display: block;
-              background: #cccc;
-              transform: scaleX(110px);
-            }
-          }
-        }
-      }
-    }
   }
 }

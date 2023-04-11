@@ -1,17 +1,26 @@
+@import "@style/_global.scss";
+
 .contact {
   width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 80px;
-  .contact__container {
-    max-width: 1024px;
+  @include mobile {
+    margin-bottom: 40px;
+  }
+  &__container {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     justify-content: space-between;
     padding: 0 20px;
-    .contact__container-header {
+    @include mobile {
+      padding: 0 8px;
+    }
+    &-header {
       margin-bottom: 80px;
+      @include mobile {
+        margin-bottom: 40px;
+      }
       p {
         display: inline-block;
         font-size: 36px;
@@ -34,7 +43,7 @@
         }
       }
     }
-    .contact__container-content {
+    &-content {
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -50,7 +59,10 @@
           box-sizing: border-box;
           box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
           border-radius: 12px;
-          .box-header {
+          @include mobile {
+            width: 100%;
+          }
+          &-header {
             margin: 0 0 30px;
             padding: 0;
             color: #fff;
@@ -160,7 +172,7 @@
                   animation-delay: 1.125s;
                 }
               }
-              input {
+              button {
                 font-weight: bold;
                 transition: 0.5s;
                 color: #fff;
@@ -182,6 +194,9 @@
           width: calc(50% - 20px);
           box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
           border-radius: 12px;
+          @include mobile {
+            display: none;
+          }
           img {
             width: 100%;
             border-radius: 12px;
@@ -194,6 +209,12 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        @include mobile {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: 8px;
+        }
         .contact-method {
           width: 32%;
           display: flex;
@@ -201,7 +222,10 @@
           align-items: center;
           background-color: #082032;
           padding: 20px 10px;
-          .contact-method-header {
+          @include mobile {
+            width: 100%;
+          }
+          &-header {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -216,13 +240,13 @@
               margin-bottom: 10px;
             }
           }
-          .contact-method-detail {
-            color: white;
+          &-detail {
+            color: $desc-color;
             display: flex;
             justify-content: center;
             font-size: 18px;
             a {
-              color: white;
+              color: $desc-color;
               text-decoration: none;
             }
             p {
@@ -276,36 +300,5 @@
   50%,
   100% {
     bottom: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .contact {
-    margin-bottom: 40px;
-    .contact__container {
-      padding: 0 8px;
-      .contact__container-header {
-        margin-bottom: 40px;
-      }
-      .contact__container-content {
-        .first-row {
-          .box {
-            width: 100%;
-          }
-          .first-row-img {
-            display: none;
-          }
-        }
-        .second-row {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          gap: 8px;
-          .contact-method {
-            width: 100%;
-          }
-        }
-      }
-    }
   }
 }

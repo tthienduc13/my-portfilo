@@ -1,28 +1,34 @@
 import React from "react";
 import "../About/About.scss";
+import "@style/_global.scss";
 function About() {
+  const tech = [
+    "HTML",
+    "CSS",
+    "SCSS",
+    "Responsive",
+    "Tailwindcss",
+    "JavaScript",
+    "ReactJS",
+    "Git",
+    "Figma",
+    "Photoshop",
+  ];
   return (
     <>
       <div className="about" id="about">
-        <div className="about__container">
+        <div className="about__container container">
           <div className="about__container-img">
-            <img src={require("../../assets/aboutImg.jpg")}></img>
+            <img src={require("@img/aboutImg.jpg")}></img>
           </div>
           <div className="about__container-content">
             <div className="about__container-content-header">
               <p>About me</p>
             </div>
             <div className="about__container-content-tech">
-              <div className="tech">HTML</div>
-              <div className="tech">CSS</div>
-              <div className="tech">SCSS</div>
-              <div className="tech">Responsive</div>
-              <div className="tech">Tailwindcss</div>
-              <div className="tech">JavaScript</div>
-              <div className="tech">ReactJS</div>
-              <div className="tech">Git</div>
-              <div className="tech">Figma</div>
-              <div className="tech">Photoshop</div>
+              {tech.map((item, index) => (
+                <div className="tech"> {item}</div>
+              ))}
             </div>
             <div className="about__container-content-desc">
               Hi! My full name is Nguyen Le Thien Duc, or you can call me Davis.

@@ -1,7 +1,12 @@
 import React from "react";
 import "../Header/Header.scss";
-function Navbarmobile({ functionSetToggle, functionSetActive }) {
-  const handleNav = () => {
+function Navbarmobile({
+  functionSetToggle,
+  functionSetActive,
+  navbarItems,
+  navbarIcons,
+}) {
+  const handleBurger = () => {
     functionSetToggle(false);
     functionSetActive(false);
   };
@@ -9,38 +14,19 @@ function Navbarmobile({ functionSetToggle, functionSetActive }) {
     <>
       <nav className="navbar-mobile">
         <ul>
-          <a href="#home" onClick={handleNav}>
-            <li>Home</li>
-          </a>
-          <a href="#about" onClick={handleNav}>
-            <li>About</li>
-          </a>
-          <a href="#projects" onClick={handleNav}>
-            <li>Projects</li>
-          </a>
-          <a href="#contact" onClick={handleNav}>
-            <li>Contact</li>
-          </a>
+          {navbarItems.map((item, index) => (
+            <a href={item.href} onClick={handleBurger}>
+              <li>{item.title}</li>
+            </a>
+          ))}
         </ul>
         <div className="mobile-icon">
-          <a href="https://www.facebook.com/thien.duc.1310" target="blank">
-            {" "}
-            <i class="fa-brands fa-square-facebook"></i>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/nguyen-le-thien-duc-30aa03251/"
-            target="blank"
-          >
-            {" "}
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/tthienduc13" target="blank">
-            {" "}
-            <i class="fa-brands fa-square-github"></i>
-          </a>
-          <a href="mailto:nglethienduc@gmail.com">
-            <i class="fa-solid fa-envelope"></i>
-          </a>
+          {navbarIcons.map((item, index) => (
+            <a href={item.href} target="blank">
+              {" "}
+              <i class={item.icon}></i>
+            </a>
+          ))}
         </div>
       </nav>
     </>

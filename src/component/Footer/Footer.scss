@@ -1,62 +1,65 @@
+@import "@style/_global.scss";
 .footer {
-  height: 96px;
   width: 100%;
-  background-color: #082032;
+  background-color: $base-color;
   display: flex;
   z-index: 10;
   justify-content: center;
-  .footer__container {
-    max-width: 1024px;
+  &__container {
     position: relative;
-    color: #cc5a71;
     display: flex;
-    flex-grow: 1;
-    justify-content: space-around;
-    align-items: center;
-    .copyright {
-      color: #cc5a71;
-      font-weight: 700;
-      font-size: 20px;
-      i {
-        margin-right: 10px;
-      }
-      a {
-        color: #cc5a71;
-        // text-decoration: none;
-      }
-    }
-    .icon {
-      color: white;
-      width: 30%;
-      margin-right: 20px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      cursor: pointer;
-      i {
-        color: white;
-        font-size: 24px;
-        padding: 0 8px;
-        &:hover {
-          color: #cc5a71;
-          transform: scale(1.5);
-          transition: 0.5s;
-        }
-      }
-    }
-  }
-}
+    justify-content: space-between;
 
-@media (max-width: 768px) {
-  .footer {
-    height: 76px;
-    .footer__container {
+    padding: 80px 20px;
+    @include mobile {
       flex-direction: column;
-      align-items: center;
-      .icon {
+      padding: 30px 8px;
+      align-items: flex-start;
+    }
+    &-copyright {
+      width: 33%;
+      @include mobile {
         width: 100%;
-        margin-right: 0;
-        justify-content: center;
+        margin-bottom: 8px;
+      }
+      .copyright-title {
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .copyright-desc {
+        color: $desc-color;
+        font-size: 14px;
+        margin-top: 8px;
+      }
+    }
+    &-content {
+      width: 66%;
+      display: flex;
+      gap: 160px;
+      justify-content: flex-end;
+      @include mobile {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .content__item {
+        display: flex;
+        flex-direction: column;
+        &-title {
+          font-size: 20px;
+          font-weight: 600;
+          color: $desc-color;
+          line-height: 28px;
+          margin-bottom: 4px;
+        }
+        &-desc {
+          font-weight: 700;
+          margin-top: 4px;
+          font-size: 18px;
+          display: inline-block;
+          text-decoration: none;
+          color: $spot-color;
+        }
       }
     }
   }

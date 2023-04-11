@@ -1,25 +1,4 @@
-$mobile-width: 768px;
-$small-tablet-width: 960px;
-$tablet-width: 1024px;
-
-@mixin tablet {
-  @media (min-width: #{$small-tablet-width}) and (max-width: #{$tablet-width}) {
-    @content;
-  }
-}
-
-@mixin small-tablet {
-  @media (min-width: #{$mobile-width}) and (max-width: #{$small-tablet-width}) {
-    @content;
-  }
-}
-
-@mixin mobile {
-  @media (max-width: #{$mobile-width}) {
-    @content;
-  }
-}
-
+@import "@style/_global.scss";
 .banner {
   width: 100%;
   display: flex;
@@ -30,9 +9,7 @@ $tablet-width: 1024px;
     margin-top: 76px;
   }
   &__container {
-    max-width: 1024px;
     display: flex;
-    flex-grow: 1;
     justify-content: space-between;
     padding: 0 20px;
     @include small-tablet() {
@@ -60,7 +37,7 @@ $tablet-width: 1024px;
         gap: 10px;
         padding: 20px 0;
         font-size: 50px;
-        color: #082032;
+        color: $base-color;
         font-weight: 700;
         @include small-tablet() {
           font-size: 36px;
@@ -81,7 +58,7 @@ $tablet-width: 1024px;
           line-height: 80px;
           height: 80px;
           overflow: hidden;
-          font-size: 60px;
+          font-size: 50px;
           @include small-tablet() {
             font-size: 40px;
           }
@@ -139,16 +116,5 @@ $tablet-width: 1024px;
 @keyframes slide {
   100% {
     top: -240px;
-  }
-}
-@media (max-width: 1024px) {
-  .banner {
-    .banner__container {
-      .banner__container-content {
-        .static-text {
-          font-size: 40px;
-        }
-      }
-    }
   }
 }

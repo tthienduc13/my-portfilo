@@ -2,6 +2,7 @@ import React from "react";
 import "../Header/Header.scss";
 import { useState, useEffect, useRef } from "react";
 import Navbarmobile from "./Navbarmobile";
+import "@style/_global.scss";
 function Header() {
   const ref = useRef();
   const [toggle, setToggle] = useState(false);
@@ -28,46 +29,56 @@ function Header() {
     };
   }, [toggle]);
 
+  const navbarItems = [
+    { href: "#home", title: "Home" },
+    { href: "#about", title: "About" },
+    { href: "#projects", title: "Projects" },
+    { href: "#contact", title: "Contact" },
+  ];
+
+  const navbarIcons = [
+    {
+      name: "Facebook",
+      href: "https://www.facebook.com/thien.duc.1310",
+      icon: "fa-brands fa-square-facebook",
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/nguyen-le-thien-duc-30aa03251/",
+      icon: "fa-brands fa-linkedin",
+    },
+    {
+      name: "Github",
+      href: "https://github.com/tthienduc13",
+      icon: "fa-brands fa-square-github",
+    },
+    {
+      name: "Mail",
+      href: "mailto:ducnltdev@gmail.com",
+      icon: "fa-solid fa-envelope",
+    },
+  ];
   return (
     <>
       <div className="header" ref={ref}>
-        <div className="header__container">
+        <div className="header__container container">
           {/* Navbar */}
           <ul className="header__container-navbar">
             <div className="header__container-name">Davis Nguyen</div>
-            <a href="#home">
-              <li>Home</li>
-            </a>
-            <a href="#about">
-              <li>About</li>
-            </a>
-            <a href="#projects">
-              <li>Projects</li>
-            </a>
-            <a href="#contact">
-              <li>Contact</li>
-            </a>
+            {navbarItems.map((item, index) => (
+              <a href={item.href}>
+                <li>{item.title}</li>
+              </a>
+            ))}
           </ul>
           {/* Icon for contact */}
           <div className="icon">
-            <a href="https://www.facebook.com/thien.duc.1310" target="blank">
-              {" "}
-              <i class="fa-brands fa-square-facebook"></i>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/nguyen-le-thien-duc-30aa03251/"
-              target="blank"
-            >
-              {" "}
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/tthienduc13" target="blank">
-              {" "}
-              <i class="fa-brands fa-square-github"></i>
-            </a>
-            <a href="mailto:ducnltdev@gmail.com">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
+            {navbarIcons.map((item, index) => (
+              <a href={item.href} target="blank">
+                {" "}
+                <i class={item.icon}></i>
+              </a>
+            ))}
           </div>
           {/* Menu burger */}
           <div for="burger" class="burger" onClick={() => showMenu()}>
@@ -96,6 +107,8 @@ function Header() {
             <Navbarmobile
               functionSetToggle={setToggle}
               functionSetActive={setActive}
+              navbarItems={navbarItems}
+              navbarIcons={navbarIcons}
             ></Navbarmobile>
           )}
         </div>
