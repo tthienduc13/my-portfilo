@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import "../Contact/Contact.scss";
 import "@style/_global.scss";
-import axios from "axios";
 import { contactRequest, uploadData } from "../../apis";
 function Contact() {
   const $form = document.querySelector("form");
