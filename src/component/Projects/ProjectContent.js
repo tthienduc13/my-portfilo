@@ -2,7 +2,9 @@ import React from "react";
 import "../Projects/ProjectContent.scss";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useTranslation } from "react-i18next";
 function ProjectContent({ data }) {
+  const [t, i18n] = useTranslation("global");
   AOS.init();
   return (
     <>
@@ -22,14 +24,19 @@ function ProjectContent({ data }) {
               <span class="circle" aria-hidden="true">
                 <span class="icon arrow"></span>
               </span>
-              <a class="button-text" href={data.link}>
-                Learn More
+              <a
+                class="button-text"
+                href={data.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t("project.button")}
               </a>
             </button>
           </div>
         </div>
         <a className="project__content-img" href={data.link} target="blank">
-          <img src={data.imgLink}></img>
+          <img src={data.imgLink} alt="project-pic"></img>
         </a>
       </div>
     </>

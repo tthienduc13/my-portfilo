@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "project": "Project",
+    "contact": "Contact"
+  },
+  "banner": {
+    "title": "Hi",
+    "staticText1": "I'm",
+    "staticText2": "I'm a"
+  },
+  "about": {
+    "title": "About me",
+    "desc": "Hi! My full name is Nguyen Le Thien Duc, or you can call me Davis. I am a student of FPT University. With a strong desire to learn more about programming, I am confident that I can develop my knowledge and abilities to successfully complete the duties assigned by the organization.",
+    "button": "Download CV"
+  },
+  "project": {
+    "title": "Projects",
+    "button": "View more"
+  },
+  "contact": {
+    "title": "Contact",
+    "formTitle": "Get in touch",
+    "formEmail": "Email",
+    "formName": "Name",
+    "formMsg": "Enter message...",
+    "formBtn": "Send",
+    "location": "Location",
+    "phone": "Phone Number",
+    "email": "Email"
+  },
+  "footer": {
+    "author": "Built and designed by DucNLT",
+    "links": "Links",
+    "contact": "Contact"
+  }
+}

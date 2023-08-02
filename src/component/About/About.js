@@ -1,6 +1,7 @@
 import React from "react";
 import "../About/About.scss";
 import "@style/_global.scss";
+import { useTranslation } from "react-i18next";
 function About() {
   const tech = [
     "HTML",
@@ -9,21 +10,23 @@ function About() {
     "Responsive",
     "Tailwindcss",
     "JavaScript",
+    "TypeScript",
     "ReactJS",
+    "NextJS",
     "Git",
     "Figma",
-    "Photoshop",
   ];
+  const [t, i18n] = useTranslation("global");
   return (
     <>
       <div className="about" id="about">
         <div className="about__container container">
           <div className="about__container-img">
-            <img src={require("@img/aboutImg.jpg")}></img>
+            <img src={require("@img/aboutImg.jpg")} alt="profile-pic"></img>
           </div>
           <div className="about__container-content">
             <div className="about__container-content-header">
-              <p>About me</p>
+              <p>{t("about.title")}</p>
             </div>
             <div className="about__container-content-tech">
               {tech.map((item, index) => (
@@ -31,15 +34,11 @@ function About() {
               ))}
             </div>
             <div className="about__container-content-desc">
-              Hi! My full name is Nguyen Le Thien Duc, or you can call me Davis.
-              I am a student of FPT University. With a strong desire to learn
-              more about programming, I am confident that I can develop my
-              knowledge and abilities to successfully complete the duties
-              assigned by the organization.
+              {t("about.desc")}
             </div>
             <div className="about__container-download-button">
               <a download href="">
-                Download CV
+                {t("about.button")}
               </a>
             </div>
           </div>

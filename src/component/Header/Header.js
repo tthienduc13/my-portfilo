@@ -2,10 +2,12 @@ import React from "react";
 import "../Header/Header.scss";
 import { useState, useEffect, useRef } from "react";
 import Navbarmobile from "./Navbarmobile";
+import { useTranslation } from "react-i18next";
 import "@style/_global.scss";
 function Header() {
   const ref = useRef();
   const [toggle, setToggle] = useState(false);
+  const [langToggle, setLangToggle] = useState(false);
   const showMenu = () => {
     setToggle(!toggle);
     setActive(!acitve);
@@ -13,8 +15,6 @@ function Header() {
   const [acitve, setActive] = useState(false);
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
-      // If the menu is open and the clicked target is not within the menu,
-      // then close the menu
       if (toggle && ref.current && !ref.current.contains(e.target)) {
         setToggle(!toggle);
         setActive(!acitve);
@@ -29,11 +29,21 @@ function Header() {
     };
   }, [toggle]);
 
+  const [t, i18n] = useTranslation("global");
+  const handleChangeLang = (lang) => {
+    i18n.changeLanguage(lang);
+    setLangToggle(!langToggle);
+  };
+  const handleShowLang = () => {
+    setLangToggle(!langToggle);
+    handleChangeLang();
+  };
+
   const navbarItems = [
-    { href: "#home", title: "Home" },
-    { href: "#about", title: "About" },
-    { href: "#projects", title: "Projects" },
-    { href: "#contact", title: "Contact" },
+    { href: "#home", title: `${t("nav.home")}` },
+    { href: "#about", title: `${t("nav.about")}` },
+    { href: "#projects", title: `${t("nav.project")}` },
+    { href: "#contact", title: `${t("nav.contact")}` },
   ];
 
   const navbarIcons = [
@@ -66,20 +76,36 @@ function Header() {
           <ul className="header__container-navbar">
             <div className="header__container-name">Davis Nguyen</div>
             {navbarItems.map((item, index) => (
-              <a href={item.href}>
-                <li>{item.title}</li>
-              </a>
+              <>
+                <a href={item.href}>
+                  <li>{item.title}</li>
+                </a>
+              </>
             ))}
           </ul>
           {/* Icon for contact */}
           <div className="icon">
             {navbarIcons.map((item, index) => (
-              <a href={item.href} target="blank">
-                {" "}
-                <i class={item.icon}></i>
-              </a>
+              <>
+                <a href={item.href} target="blank">
+                  {" "}
+                  <i class={item.icon}></i>
+                </a>
+              </>
             ))}
+            <p className="lang" onClick={handleShowLang}>
+              <i class="fa-solid fa-language"></i>
+              {langToggle && (
+                <div className="langToggle">
+                  <button onClick={() => handleChangeLang("en")}>
+                    English
+                  </button>
+                  <button onClick={() => handleChangeLang("jp")}>日本語</button>
+                </div>
+              )}
+            </p>
           </div>
+
           {/* Menu burger */}
           <div for="burger" class="burger" onClick={() => showMenu()}>
             <span

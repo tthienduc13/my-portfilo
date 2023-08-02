@@ -1,5 +1,7 @@
 import React from "react";
 import "../Header/Header.scss";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 function Navbarmobile({
   functionSetToggle,
   functionSetActive,
@@ -9,6 +11,17 @@ function Navbarmobile({
   const handleBurger = () => {
     functionSetToggle(false);
     functionSetActive(false);
+  };
+  const [t, i18n] = useTranslation("global");
+  const [langToggle, setLangToggle] = useState(false);
+
+  const handleChangeLang = (lang) => {
+    i18n.changeLanguage(lang);
+    setLangToggle(!langToggle);
+  };
+  const handleShowLang = () => {
+    setLangToggle(!langToggle);
+    handleChangeLang();
   };
   return (
     <>
@@ -27,6 +40,15 @@ function Navbarmobile({
               <i class={item.icon}></i>
             </a>
           ))}
+          <p className="lang" onClick={handleShowLang}>
+            <i class="fa-solid fa-language"></i>
+            {langToggle && (
+              <div className="langToggle">
+                <button onClick={() => handleChangeLang("en")}>English</button>
+                <button onClick={() => handleChangeLang("jp")}>日本語</button>
+              </div>
+            )}
+          </p>
         </div>
       </nav>
     </>

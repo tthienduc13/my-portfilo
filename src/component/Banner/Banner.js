@@ -2,20 +2,22 @@ import React from "react";
 import "../Banner/Banner.scss";
 import BlueBg from "@icons/BlueBg.svg";
 import "@style/_global.scss";
+import { useTranslation } from "react-i18next";
 function Banner() {
+  const [t, i18n] = useTranslation("global");
   return (
     <>
       <div className="banner" id="home">
         <div className="banner__container container">
           <div className="banner__container-content">
             <div className="banner__container-intro">
-              <div className="static-text">Hy!</div>
+              <div className="static-text">{t("banner.title")}!</div>
               <div className="static-text">
-                I'm <span>Davis Nguyen</span>
+                {t("banner.staticText1")} <span>Davis Nguyen</span>
               </div>
             </div>
             <div className="banner__container-live-text">
-              <div className="static-text">I'm a</div>
+              <div className="static-text">{t("banner.staticText2")}</div>
               <ul className="dynamic-texts">
                 <li>
                   <span>Designer</span>

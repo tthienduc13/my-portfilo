@@ -1,4 +1,4 @@
-const ProjectData = [
+const ProjectDataJp = [
   {
     name: "Journey",
     tech: ["ReactJS", "Tailwindcss", "Responsive"],
@@ -16,4 +16,4 @@ const ProjectData = [
     link: "https://tthienduc13.github.io/the_band/",
   },
 ];
-export default ProjectData;
+export default ProjectDataJp;
