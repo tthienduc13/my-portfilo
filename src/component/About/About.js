@@ -2,6 +2,7 @@ import React from "react";
 import "../About/About.scss";
 import "@style/_global.scss";
 import { useTranslation } from "react-i18next";
+import myCv from "../../static/NguyenLeThienDuc_CV.pdf";
 function About() {
   const tech = [
     "HTML",
@@ -37,7 +38,7 @@ function About() {
               {t("about.desc")}
             </div>
             <div className="about__container-download-button">
-              <a download href="">
+              <a download href={myCv}>
                 {t("about.button")}
               </a>
             </div>
